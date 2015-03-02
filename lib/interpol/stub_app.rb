@@ -29,7 +29,7 @@ module Interpol
           before            { content_type "application/json;charset=utf-8" }
           before('/__ping') { skip_param_parsing! if respond_to?(:skip_param_parsing!) }
           get('/__ping')    { JSON.dump(:message => "Interpol stub app running.") }
-          enable            :perform_validations
+          enable            :perform_validations, :logging
 
           def self.name
             "Interpol::StubApp (anonymous)"
