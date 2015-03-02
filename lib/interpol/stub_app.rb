@@ -30,6 +30,7 @@ module Interpol
           before('/__ping') { skip_param_parsing! if respond_to?(:skip_param_parsing!) }
           get('/__ping')    { JSON.dump(:message => "Interpol stub app running.") }
           enable            :perform_validations, :logging
+          set :protection, :except => [:json_csrf]
 
           def self.name
             "Interpol::StubApp (anonymous)"
